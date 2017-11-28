@@ -1,2 +1,2 @@
 # react-mobx
-Mobxl学习记录
+Mobx学习记录
