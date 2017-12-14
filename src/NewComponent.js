@@ -1,5 +1,5 @@
 import React from 'react';
-import { observable, action, computed, observe } from 'mobx';
+import { observable, action, computed, observe, autorun } from 'mobx';
 import { observer, inject, Provider } from 'mobx-react';
 import styled, { keyframes } from 'styled-components';
 import { withProps } from 'recompose';
@@ -11,11 +11,17 @@ const Head = styled.h2`
   `
 
 const Rotate360 = keyframes`
-    from {
+    0% {
       transform: rotate(0deg);
+      background-color: #fff;
     }
-    to {
+    50% {
+      transform: rotate(90deg);
+      background-color: #000;
+    }
+    100% {
       transform: rotate(360deg);
+      background-color: #eee;
     }
   `
 
@@ -23,7 +29,7 @@ const Rotate = styled.div`
     animation: ${Rotate360} 2s linear infinite;
     width: 100px;
     height: 100px;
-    background-color: #ccc;
+    background-color: #fff;
   `;
 
 
@@ -41,7 +47,15 @@ const store = new Store();
 @observer
 class MobxComponent extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.autoRunMark = autorun(() => {
+      console.log(this.count_2);
+    });
+  }
+
   @observable count = 0;
+  @observable count_2 = 0;
 
   increment = () => {
     this.count ++;
@@ -51,13 +65,18 @@ class MobxComponent extends React.Component {
     this.count --;
   }
 
+  syncCount = () => {
+    this.count_2 = this.count;
+  }
+
   render() {
     return (
       <div>
         <h2>{this.count}</h2>
-        <Head>this is a tes styled-components tag</Head>
+        <Head>this is a test styled-components tag</Head>
         <button onClick={this.increment}> + </button>
         <button onClick={this.decrement}> - </button>
+        <button onClick={this.syncCount}> sync data </button>
         <button onClick={store.changeData}> click me! </button>
         <Rotate />
         {
