@@ -2,6 +2,7 @@ import React from 'react';
 import { observable, action, computed, observe } from 'mobx';
 import { observer, inject, Provider } from 'mobx-react';
 import styled, { keyframes } from 'styled-components';
+import { withProps } from 'recompose';
 
 const Head = styled.h2`
     font-size: 16px;
@@ -97,6 +98,7 @@ class Div extends React.Component {
 
 class Wrapper extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <Div>
         <Provider name="test1" store={store} data="456">
@@ -110,4 +112,4 @@ class Wrapper extends React.Component {
 
 
 
-export default Wrapper;
+export default withProps(props => {console.log(props);props = {a:123};return props})(Wrapper);
