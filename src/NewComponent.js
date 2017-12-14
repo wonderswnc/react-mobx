@@ -5,32 +5,32 @@ import styled, { keyframes } from 'styled-components';
 import { withProps } from 'recompose';
 
 const Head = styled.h2`
-    font-size: 16px;
-    line-height: 20px;
-    background-color: yellow;
-  `
+  font-size: 16px;
+  line-height: 20px;
+  background-color: yellow;
+`
 
 const Rotate360 = keyframes`
-    0% {
-      transform: rotate(0deg);
-      background-color: #fff;
-    }
-    50% {
-      transform: rotate(90deg);
-      background-color: #000;
-    }
-    100% {
-      transform: rotate(360deg);
-      background-color: #eee;
-    }
-  `
+  0% {
+    transform: rotate(0deg);
+    background-color: #fff;
+  }
+  50% {
+    transform: rotate(90deg);
+    background-color: #000;
+  }
+  100% {
+    transform: rotate(360deg);
+    background-color: #eee;
+  }
+`
 
 const Rotate = styled.div`
-    animation: ${Rotate360} 2s linear infinite;
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-  `;
+  animation: ${Rotate360} 2s linear infinite;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+`;
 
 
 class Store {
