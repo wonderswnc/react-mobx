@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import TestComponent from './TestComponent';
+import MobxComponent from './NewComponent';
 
-ReactDOM.render(<TestComponent />, document.getElementById('root'));
+ReactDOM.render(<MobxComponent />, document.getElementById('root'));
 registerServiceWorker();
