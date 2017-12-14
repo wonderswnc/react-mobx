@@ -117,7 +117,6 @@ class Div extends React.Component {
 
 class Wrapper extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <Div>
         <Provider name="test1" store={store} data="456">
@@ -131,4 +130,4 @@ class Wrapper extends React.Component {
 
 
 
-export default withProps(props => {console.log(props);props = {a:123};return props})(Wrapper);
+export default withProps(props => {props = {a:123};return props})(Wrapper);
