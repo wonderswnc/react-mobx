@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { observable, action, computed, observe, autorun } from 'mobx';
 import { observer, inject, Provider } from 'mobx-react';
 import styled, { keyframes } from 'styled-components';
 import { withProps } from 'recompose';
+import PropTypes from 'prop-types';
 
 const Head = styled.h2`
   font-size: 16px;
@@ -87,6 +88,34 @@ class MobxComponent extends React.Component {
   }
 }
 
+function Plugin({ children }) {
+  return <div>{ children }</div>
+}
+
+Plugin.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
+class Ul extends React.Component {
+  
+  static Plugin = Plugin;
+
+  state = {
+    use: '123'
+  }
+
+  render() {
+
+    const nextComponent = this.props.children.filter(child => child.props.name === this.state.use);
+    return (
+      <div>
+        { nextComponent }
+        <button onClick={() => this.setState(state => ({use: state.use === '123' ? '456' : '123'}))}>click me change view !</button>
+      </div>
+    )
+  }
+}
+
 class Div extends React.Component {
 
   state = {
@@ -122,7 +151,16 @@ class Wrapper extends React.Component {
         <Provider name="test1" store={store} data="456">
           <MobxComponent />
         </Provider>
-        <div name="test2">123</div>
+        <div name="test2">
+          <Ul>
+            <Ul.Plugin name="123">
+              <div>test msg , i am No.1!</div>
+            </Ul.Plugin>
+            <Ul.Plugin name="456">
+              <div>test msg 2 hahaha</div>
+            </Ul.Plugin>
+          </Ul>
+        </div>
       </Div>
     )
   }
