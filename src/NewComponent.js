@@ -36,6 +36,7 @@ const Rotate = styled.div`
 `;
 
 
+
 class Store {
   @observable data = observable.array(['test1', 'test2']);
   @action.bound
@@ -80,7 +81,8 @@ class MobxComponent extends React.Component {
         <button onClick={this.increment}> + </button>
         <button onClick={this.decrement}> - </button>
         <button onClick={this.syncCount}> sync data </button>
-        <button onClick={store.changeData} > click me! </button>
+        <button onClick={store.changeData}> click me! </button>
+        <Button ></Button>
         <Rotate />
         {
           this.props.data.map(item => <div key={item}>{item}</div>)
@@ -153,7 +155,7 @@ class Wrapper extends React.Component {
     return (
       <Div>
         <Provider name="test1" store={store} data="456">
-          <MobxComponent />
+          <MobxComponent /> 
         </Provider>
         <div name="test2">
           <Ul>
