@@ -27,15 +27,12 @@ const Rotate360 = keyframes`
   }
 `
 
-
 const Rotate = styled.div`
   animation: ${Rotate360} 2s linear infinite;
   width: 100px;
   height: 100px;
   background-color: #fff;
 `;
-
-
 
 class Store {
   @observable data = observable.array(['test1', 'test2']);
@@ -167,7 +164,9 @@ class Wrapper extends React.Component {
             </Ul.Plugin>
           </Ul>
           <Button>i am a test antd component!</Button>
+          <button onclick={}></button>
         </div>
+        <div onClick={this.autorun}>{ calendarFormat }</div>
       </Div>
     )
   }
