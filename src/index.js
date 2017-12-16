@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import TestComponent from './TestComponent';
 import MobxComponent from './NewComponent';
+import AntdComponent from './StyledComponents';
 
-ReactDOM.render(<MobxComponent />, document.getElementById('root'));
+ReactDOM.render(<AntdComponent />, document.getElementById('root'));
 registerServiceWorker();

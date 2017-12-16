@@ -4,6 +4,7 @@ import { observer, inject, Provider } from 'mobx-react';
 import styled, { keyframes } from 'styled-components';
 import { withProps } from 'recompose';
 import PropTypes from 'prop-types';
+import { Button } from 'antd'; 
 
 const Head = styled.h2`
   font-size: 16px;
@@ -25,6 +26,7 @@ const Rotate360 = keyframes`
     background-color: #eee;
   }
 `
+
 
 const Rotate = styled.div`
   animation: ${Rotate360} 2s linear infinite;
@@ -78,7 +80,7 @@ class MobxComponent extends React.Component {
         <button onClick={this.increment}> + </button>
         <button onClick={this.decrement}> - </button>
         <button onClick={this.syncCount}> sync data </button>
-        <button onClick={store.changeData}> click me! </button>
+        <button onClick={store.changeData} > click me! </button>
         <Rotate />
         {
           this.props.data.map(item => <div key={item}>{item}</div>)
@@ -95,6 +97,7 @@ function Plugin({ children }) {
 Plugin.propTypes = {
   name: PropTypes.string.isRequired
 }
+
 
 class Ul extends React.Component {
   
@@ -161,12 +164,11 @@ class Wrapper extends React.Component {
               <div>test msg 2 hahaha</div>
             </Ul.Plugin>
           </Ul>
+          <Button>i am a test antd component!</Button>
         </div>
       </Div>
     )
   }
 }
-
-
 
 export default withProps(props => {props = {a:123};return props})(Wrapper);
