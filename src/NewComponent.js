@@ -165,7 +165,6 @@ class Wrapper extends React.Component {
           </Ul>
           <Button>i am a test antd component!</Button>
         </div>
-        <div onClick={this.autorun}>{  }</div>
       </Div>
     )
   }

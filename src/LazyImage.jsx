@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const Fade = keyframes`
@@ -33,7 +33,6 @@ const fadein = keyframes`
 const ImageWrapper = styled.img`
   animation: ${fadein} .5s ease-in-out 1;
   width: 100%;
-  
   height: 100%;
 `;
 
@@ -41,7 +40,7 @@ const LzayContent = styled.span`
   width: ${({width = '200px'}) => width};
   height: ${({height = '200px'}) => height};
   display: inline-block;
-  background-color: #ccc;
+  background-color: ${({color = 'red'}) => color};
   vertical-align: middle;
 `;
 
@@ -49,7 +48,9 @@ class LazyImage extends React.Component {
 
   state = {
     loading: true,
-    src: ''
+    src: '',
+    color: 'rgb(0, 0, 0)',
+    change: false
   };
 
   componentDidMount() {
@@ -61,15 +62,29 @@ class LazyImage extends React.Component {
     }
   }
 
+  changeColor = () => {
+    const getColor = () => (Math.random() * 255 | 0);
+    const changeStyle = () => {
+      this.setState({color: `rgb(${getColor()},${getColor()},${getColor()})`})
+      this.state.change && requestAnimationFrame(() => changeStyle());
+    };
+    !this.state.change && this.setState({change: true, loading: true}, () => {
+      changeStyle();
+    })
+  };
+
   render() {
-    const {loading, src} = this.state;
+    const {loading, src, color} = this.state;
+    console.log(this.state);
     return (
-      <LzayContent {...this.props}>
+      <LzayContent {...this.props} color={color}>
         {
           loading ?
             <AnimationText> loading ... </AnimationText> :
             <ImageWrapper src={src} alt="beautiful gril"/>
         }
+        <button onClick={this.changeColor}>change color</button>
+        <button onClick={() => this.setState({change: false, loading: false})}>stop</button>
       </LzayContent>
     )
   }

@@ -1,11 +1,12 @@
-import React from 'react';
-
-class Text extends React.Component {
-
-    render() {
-        return (
-            <div>
-            </div>
-        )
-    }
+function addStatic(target) {
+  target.add = (prev, next) => prev + next;
 }
+
+@addStatic
+class Test {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+

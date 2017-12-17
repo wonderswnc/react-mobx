@@ -7,6 +7,7 @@ import TestComponent from './TestComponent';
 import MobxComponent from './NewComponent';
 import AntdComponent from './StyledComponents';
 import LazyImage from './LazyImage';
+import AnimationComponent from './prectice/Animation';
 
-ReactDOM.render(<LazyImage />, document.getElementById('root'));
+ReactDOM.render(<AnimationComponent />, document.getElementById('root'));
 registerServiceWorker();
