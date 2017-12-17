@@ -10,7 +10,7 @@ const Head = styled.h2`
   font-size: 16px;
   line-height: 20px;
   background-color: yellow;
-`
+`;
 
 const Rotate360 = keyframes`
   0% {
@@ -25,7 +25,7 @@ const Rotate360 = keyframes`
     transform: rotate(360deg);
     background-color: #eee;
   }
-`
+`;
 
 const Rotate = styled.div`
   animation: ${Rotate360} 2s linear infinite;
@@ -164,9 +164,8 @@ class Wrapper extends React.Component {
             </Ul.Plugin>
           </Ul>
           <Button>i am a test antd component!</Button>
-          <button onclick={}></button>
         </div>
-        <div onClick={this.autorun}>{ calendarFormat }</div>
+        <div onClick={this.autorun}>{  }</div>
       </Div>
     )
   }

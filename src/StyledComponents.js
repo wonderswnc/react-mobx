@@ -1,7 +1,9 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import styled from 'styled-components';
+
+const state = observable.shallowMap()
 
 let { Header, Content, Footer, Sider } = Layout;
 
@@ -45,6 +47,14 @@ class AntdComponent extends React.Component {
           <Footer></Footer>
         </Layout>
        </div>
+    )
+  }
+}
+
+class Test extends React.Component {
+  render() {
+    return (
+        <div className={123} onClick={this.p}></div>
     )
   }
 }
