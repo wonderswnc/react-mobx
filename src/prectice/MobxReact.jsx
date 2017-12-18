@@ -35,7 +35,7 @@ class MobxReact extends React.Component {
       return false;
     }
     this.todoList.push({
-      id: this.todoList.length,
+      id: (Math.ceil(Math.random() + Math.random())) * 1000 * Math.random() * 100,
       text: value,
       status: 'working'
     });
