@@ -8,6 +8,7 @@ import MobxComponent from './NewComponent';
 import AntdComponent from './StyledComponents';
 import LazyImage from './LazyImage';
 import AnimationComponent from './prectice/Animation';
+import MobxReact from './prectice/MobxReact';
 
-ReactDOM.render(<AnimationComponent />, document.getElementById('root'));
+ReactDOM.render(<MobxReact />, document.getElementById('root'));
 registerServiceWorker();
