@@ -7,7 +7,6 @@ import './MobxReact.less';
 class MobxReact extends React.Component {
 
   @observable todoList = observable.array();
-  @observable currentTodoIndex = null;
 
   constructor() {
     super();
@@ -15,13 +14,21 @@ class MobxReact extends React.Component {
       working: 'rgb(183, 241, 136)',
       complete: 'rgb(211, 99, 142)'
     }
+
+    window.addEventListener('storage', this.consoleStorage, false);
   }
+
+  consoleStorage = () => console.log(JSON.stringify(window.localStorage.getItem('todo')));
 
   componentDidMount() {
     Array.isArray(this.getShowDate()) &&
     this.getShowDate().forEach(item => this.todoList.push(item));
     autorun(() => this.saveDate());
   }
+
+  // componentWillMount() {
+  //   window.removeEventListener('storage', this.consoleStorage, false);
+  // }
 
   saveDate = () => {
     window.localStorage.setItem('todo', JSON.stringify(this.todoList.toJS()));
@@ -90,6 +97,7 @@ class MobxReact extends React.Component {
             }
           </ul>
         </div>
+        <button onClick={() => window.localStorage.setItem('a', 1)}>storage a number</button>
       </div>
     )
   }
