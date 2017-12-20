@@ -9,4 +9,4 @@ function splitString(originString, splitSection) {
   return _arr;
 }
 
-splitString("I like all blue shades really, but navy in particular is my favourite shade of blue.", [[40, 2], [43, 10]])
+splitString("I like all blue shades really, but navy in particular is my favourite shade of blue.", [[40, 2], [43, 10], [60, 1], [65, 1]])

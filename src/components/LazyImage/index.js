@@ -106,7 +106,7 @@ export default class TestLazyImage extends React.Component {
       <div>
         {
           loadingImage ?
-            <LazyImage url={"http://pic.pc6.com/up/2010-12/2010123093357315.jpg"}/> :
+            <LazyImage url={"http://www.3dmgame.com/UploadFiles/201208/20120804104027863.jpg"}/> :
             null
         }
         <button onClick={this.changeView}> click me to show the picture</button>

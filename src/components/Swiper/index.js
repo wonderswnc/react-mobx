@@ -2,7 +2,18 @@ import React from 'react';
 import { observable, computed, autorun, observe } from 'mobx';
 import { observer } from 'mobx-react';
 import Proptypes from 'prop-types';
-import './Swiper.less';
+import './style.less';
+
+const throttle = (throttleInterval = 500) => {
+  let nextTime = 0;
+  return (callback, ...props) => {
+    const currentTime = Date.now();
+    if (currentTime > nextTime) {
+      callback(...props);
+      nextTime = currentTime + throttleInterval;
+    }
+  }
+}
 
 class LazyImage extends React.Component {
   state = {
@@ -15,7 +26,6 @@ class LazyImage extends React.Component {
     image.src = this.props.src;
     image.onload = () => {
       this.setState({src: this.props.src, loading: false})
-      this.props.onload();
     }
   }
 
@@ -52,11 +62,20 @@ export default class Swiper extends React.Component {
     }
   }
 
+  static fetch = () => {
+    const imgList = [
+      'http://5b0988e595225.cdn.sohucs.com/images/20171212/7e545fc28fae4c02a5931b5872fa1f72.jpeg',
+      'http://reso3.yiihuu.com/img_966182.jpg',
+      'http://www.3dmgame.com/UploadFiles/201208/20120804104027863.jpg'
+    ]
+    return Promise.resolve({imgList: imgList});
+  }
+
   constructor(props) {
     super(props);
-    const { imgList } = props;
+    const { data: {imgList} } = props;
     this.imgList = [imgList[imgList.length - 1], ...imgList, imgList[0]];
-    
+    this.throttle = throttle().bind(this);
   }
 
   componentDidMount() {
@@ -71,18 +90,19 @@ export default class Swiper extends React.Component {
   }
 
   turnLeft = () => {
-    this.delay = '500ms';
-    this.currentIndex --;
+    this.throttle((info) => {
+      this.delay = '500ms';
+      this.currentIndex --;
+      console.log(info);
+    }, 'left')
   }
 
   turnRight = () => {
-    this.delay = '500ms';
-    this.currentIndex ++;
+    this.throttle(() => {
+      this.delay = '500ms';
+      this.currentIndex ++;
+    })
   }
-
-  // changeView = () => {
-  //   this.loadCount ++;
-  // }
 
   render() {
     return (
