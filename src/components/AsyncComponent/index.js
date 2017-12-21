@@ -26,7 +26,7 @@ class AsyncComponent extends React.Component {
           Component: Component
         }, () => console.log(this.state))
       }
-    },() => alert('oops, you seems meet a problem, please call coder'))
+    }).catch(() => alert('oops, you seems meet a problem, please call coder'));
   } 
 
   renderComponent = () => {

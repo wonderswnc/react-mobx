@@ -1,7 +1,7 @@
 import React from 'react';
 import { observable, autorun, computed } from 'mobx';
 import { observer } from 'mobx-react';
-import './MobxReact.less';
+import './style.less';
 
 @observer
 class MobxReact extends React.Component {

@@ -48,7 +48,7 @@ class LazyImage extends React.Component {
 export default class Swiper extends React.Component {
 
   @observable currentIndex = 1;
-  @observable delay = '500ms';
+  @observable delay = '200ms';
   @computed get currentOffset() {
     return `${-800 * this.currentIndex}px`;
   }
@@ -91,7 +91,7 @@ export default class Swiper extends React.Component {
 
   turnLeft = () => {
     this.throttle((info) => {
-      this.delay = '500ms';
+      this.delay = '200ms';
       this.currentIndex --;
       console.log(info);
     }, 'left')
@@ -99,7 +99,7 @@ export default class Swiper extends React.Component {
 
   turnRight = () => {
     this.throttle(() => {
-      this.delay = '500ms';
+      this.delay = '200ms';
       this.currentIndex ++;
     })
   }
@@ -110,7 +110,7 @@ export default class Swiper extends React.Component {
         <div className='content'>
           <div className='img-list' style={{
               width: `${this.imgList.length * 800}px`,
-              transform: `translateX(${this.currentOffset})`,
+              transform: `translate3D(${this.currentOffset}, 0, 0)`,
               transitionDuration: this.delay
             }}>
             {
