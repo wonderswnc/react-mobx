@@ -97,7 +97,6 @@ class MobxReact extends React.Component {
             }
           </ul>
         </div>
-        <button onClick={() => window.localStorage.setItem('a', 1)}>storage a number</button>
       </div>
     )
   }

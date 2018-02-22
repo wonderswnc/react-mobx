@@ -38,17 +38,20 @@ class AsyncComponent extends React.Component {
     }
   }
 
+  renderL = loading => {
+    return loading ? 
+      <Card
+        loading
+        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+        <div />
+      </Card> :
+      this.renderComponent();
+  }
+
   render() {
     const {loading, component, data} = this.state;
-    console.log(this.state);
-    return (
-      <Card
-        loading={loading}
-        style={{position: 'fixed', top: 0, right: 0,bottom: 0,left: 0}}
-      >
-        {loading ? <div /> : this.renderComponent()}
-      </Card>
-    )
+    return this.renderL(loading);
   }
 }
 

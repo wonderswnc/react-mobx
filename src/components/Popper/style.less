@@ -1,0 +1,25 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: .8;
+  }
+}
+
+.popper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, .1);
+  animation: fadein .25s;
+  &-content {
+    margin: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 0px rgba(0, 0, 0, .2);
+  }
+}

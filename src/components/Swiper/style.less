@@ -1,6 +1,7 @@
 .swiper {
   width: 800px;
   margin: 20px auto;
+  animation: fadedown .5s ease-in-out;
   .content {
     width: 100%;
     height: 450px;
@@ -53,5 +54,16 @@
   }
   to {
     opacity: 1
+  }
+}
+
+@keyframes fadedown {
+  from {
+    transform: translateY(-1000px) scale(.1);
+    opacity: .5;
+  }
+  50% {
+    transform: translateY(150px) scale(.7);
+    opacity: 1;
   }
 }
